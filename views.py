@@ -28,7 +28,11 @@ def check(task_id):
     if task.user != current_user:
         return redirect(url_for('main.todo'))
     
-    task.status = 'completed'
+    if task.status == 'completed':
+        task.status = 'not-completed'
+    else:
+        task.status = 'completed'
+        
     db.session.commit()
 
     return redirect(url_for('main.todo'))
