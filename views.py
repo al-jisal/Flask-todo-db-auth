@@ -37,7 +37,17 @@ def check(task_id):
 
     return redirect(url_for('main.todo'))
 
+@main_blueprint.route('/delete/<int:task_id>')
+@login_required
+def delete(task_id):
+    task = Task.query.get(task_id)
 
+    if task.user != current_user:
+        return redirect(url_for('main.todo'))
+    
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for('main.todo'))
 
 @main_blueprint.route('/conditional')
 def conditional():

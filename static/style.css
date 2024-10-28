@@ -61,10 +61,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    justify-items: space-between;
   }
   
-  li.completed {
+  .completed {
     text-decoration: line-through;
     color: #aaa;
   }
+ 
   
